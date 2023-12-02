@@ -31,23 +31,39 @@ fun main() {
                 transformacionFiltro.first != -1
             }.sortedBy { transformacionOrden ->
                 transformacionOrden.first
-            }.forEach { transformacionEncontrada ->
-                val transformacion = transformacionEncontrada.second
-                if (nuevaLinea.indexOf(transformacion.first) != -1)
+            }.filterIndexed { index, _ ->
+                index == 0 || index == transformacionesEncontradas.size - 1
+            }.let { transformacionesEncontradasOrdenadas ->
+                var nuevaLinea = linea
+                if (transformacionesEncontradasOrdenadas.size > 0) {
+                    val transformacionPrimera = transformacionesEncontradasOrdenadas[0]
                     nuevaLinea = nuevaLinea.replaceRange(
-                        nuevaLinea.indexOf(transformacion.first),
-                        nuevaLinea.indexOf(transformacion.first) + transformacion.first.length,
-                        transformacion.second.toString()
+                        nuevaLinea.indexOf(transformacionPrimera.second.first),
+                        nuevaLinea.indexOf(transformacionPrimera.second.first) + transformacionPrimera.second.first.length,
+                        transformacionPrimera.second.second.toString()
                     )
+                }
+                if (transformacionesEncontradasOrdenadas.size > 1) {
+                    val transformacionUltima = transformacionesEncontradasOrdenadas[1]
+                    nuevaLinea = nuevaLinea.reversed()
+                    if (nuevaLinea.indexOf(transformacionUltima.second.first.reversed()) != -1)
+                        nuevaLinea = nuevaLinea.replaceRange(
+                            nuevaLinea.indexOf(transformacionUltima.second.first.reversed()),
+                            nuevaLinea.indexOf(transformacionUltima.second.first.reversed()) + transformacionUltima.second.first.length,
+                            transformacionUltima.second.second.toString()
+                        ).reversed()
+                    else
+                        nuevaLinea = nuevaLinea.reversed()
+                }
+                println("->:  $nuevaLinea")
+                nuevaLinea
             }
-            println("->:         $nuevaLinea")
-            nuevaLinea
         }.sumOf { lineaNumeros ->
             print("linea numeros: $lineaNumeros")
             lineaNumeros.filter { caracter ->
                 caracter.isDigit()
             }.let { num ->
-                var n = if (num.length > 1) "" + num[0] + num[num.length - 1] else "" + num[0] + num[0]
+                val n = if (num.length > 1) "" + num[0] + num[num.length - 1] else "" + num[0] + num[0]
                 println("->    n: $n")
                 n
             }.toInt()
@@ -59,6 +75,6 @@ fun main() {
     // check(part1(testInput) == 1)
 
     val input = readInput("Day01")
-    part1(input).println()
+    //part1(input).println()
     part2(input).println()
 }
