@@ -81,15 +81,24 @@ fun main() {
         return partNumber
     }
 
-    /*
-        fun solvePart2(input: List<String>): Int {
-            val cubes = mapOf("red" to 12, "green" to 13, "blue" to 14)
-            val games = readData(input)
-            return games.keys.sumOf { idGame ->
-                gamePower(games, idGame)
-            }
+    /**
+     * A gear is any * symbol that is adjacent to **exactly two part numbers.** Solo 2 numeros, sino se descarta.
+     * Its gear ratio is the result of multiplying those two numbers together.
+     * This time, you need to find the gear ratio of every gear and add them all up so that the engineer
+     * can figure out which gear needs to be replaced.
+     *
+     * La propuesta es buscar *, y luego recorrer los numeros que hay alrededor. Si son dos, multiplicarlos. En otro
+     * caso ignorarlo.
+     */
+
+    fun solvePart2(input: List<String>): Int {
+        val cubes = mapOf("red" to 12, "green" to 13, "blue" to 14)
+        val games = readData(input)
+        return games.keys.sumOf { idGame ->
+            gamePower(games, idGame)
         }
-    */
+    }
+
     var result: Int
 
 // Lee los datos
@@ -106,12 +115,12 @@ fun main() {
     check(result == 557705)
 
 // Segunda parte
-    /*
-        result = solvePart2(testInput)
-        result.println()
-        check(result == 2286)
 
-        result = solvePart2(input)
-        result.println()
-    */
+    result = solvePart2(testInput)
+    result.println()
+    check(result == 467835)
+
+    result = solvePart2(input)
+    result.println()
+
 }
