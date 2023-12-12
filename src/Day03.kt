@@ -1,4 +1,7 @@
 fun main() {
+    /**
+     * Devuelve una lista de lineas desde un fichero. Devolverá la lista que ocupa la posición index y la que está antes y después.
+     */
     fun lineasAAnalizar(lineasAdyacentes: MutableList<String>, input: List<String>, index: Int) {
         val dimension = input[index].length
         lineasAdyacentes.clear()
@@ -15,10 +18,16 @@ fun main() {
         }
     }
 
+    /**
+     * Devuelve true si el caracter es un simbolo
+     */
     fun esSimbolo(c: Char): Boolean {
         return (!c.isDigit() && c != '.')
     }
 
+    /**
+     * Recorre los caracteres adyacentes para ver si es un simbolo
+     */
     fun tieneSimboloAdyacente(lineasAdyacentes: MutableList<String>, index: Int): Boolean {
         val dimension = lineasAdyacentes[0].length
 
@@ -35,6 +44,9 @@ fun main() {
         return false
     }
 
+    /**
+     *
+     */
     fun sumaPartNumbersDeLinea(lineasDeAnalisis: MutableList<String>): Int {
         val lineaActual = 1
         var numero = ""
@@ -124,3 +136,5 @@ fun main() {
     result.println()
 
 }
+
+
