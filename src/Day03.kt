@@ -51,9 +51,6 @@ fun main() {
                 if (tieneSimboloAdyacente) { // Si cualquiera de sus digitos, tenia un simbolo adyacente
                     sumaPartNumbers += numero.toInt()
                     tieneSimboloAdyacente = false
-                    println("ADYACENTE: " + numero)
-                } else {
-                    println("No simbolo adyacente: " + numero)
                 }
                 numero = ""
             }
@@ -100,6 +97,7 @@ fun main() {
 
     result = solvePart1(input)
     result.println()
+    check(result == 557705)
 
 // Segunda parte
     /*
