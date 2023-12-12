@@ -16,10 +16,7 @@ fun main() {
     }
 
     fun esSimbolo(c: Char): Boolean {
-        var es = (!c.isDigit() && c != '.')
-        if (es)
-            println(c)
-        return es
+        return (!c.isDigit() && c != '.')
     }
 
     fun tieneSimboloAdyacente(lineasAdyacentes: MutableList<String>, index: Int): Boolean {
@@ -49,9 +46,8 @@ fun main() {
                     tieneSimboloAdyacente = tieneSimboloAdyacente(lineasDeAnalisis, indice)
                 }
                 numero += caracter
-
             }
-            if ((!caracter.isDigit() || indice == lineasDeAnalisis[lineaActual].length-1) && (numero != "")) { // Si el caracter no es digito o es final de linea, y estaba leyendo un numero
+            if ((!caracter.isDigit() || indice == lineasDeAnalisis[lineaActual].length - 1) && (numero != "")) { // Si el caracter no es digito o es final de linea, y estaba leyendo un numero
                 if (tieneSimboloAdyacente) { // Si cualquiera de sus digitos, tenia un simbolo adyacente
                     sumaPartNumbers += numero.toInt()
                     tieneSimboloAdyacente = false
