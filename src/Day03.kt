@@ -23,8 +23,8 @@ fun main() {
         val dimension = lineasAdyacentes[0].length
 
         // Recorre los caracteres adyacentes para ver si es un simbolo
-        intArrayOf(0,1,2).forEach { fila ->
-            intArrayOf(-1,0,1).forEach { desplazamientoCaracter ->
+        intArrayOf(0, 1, 2).forEach { fila ->
+            intArrayOf(-1, 0, 1).forEach { desplazamientoCaracter ->
                 if ((index + desplazamientoCaracter >= 0) && (index + desplazamientoCaracter < dimension)) {
                     if (esSimbolo(lineasAdyacentes[fila][index + desplazamientoCaracter])) {
                         return true
